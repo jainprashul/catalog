@@ -18,11 +18,11 @@ const Item = ({match}) => {
   })
 
   function shareLink() {
-    if (navigator.canShare && navigator.canShare({ files: [photo] })) {
+    if (navigator.canShare) {
       navigator.share({
-        files: [photo],
-        title: `${name}`,
-        text: `${window.location.href}`,
+        title: `${name} - Priti Jain (VidyaSagar Collection)`,
+        text: `Check Out the Pattern and Collection from VidyaSagar Collection. /n Contact 8989488761`,
+        url: `${window.location.href}`,
       })
       .then(() => console.log('Share was successful.'))
       .catch((error) => console.log('Sharing failed', error));
