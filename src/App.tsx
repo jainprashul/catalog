@@ -34,6 +34,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import APPLINKS from './components/Const';
+import AddItem from './pages/AddItem';
 
 const App: React.FC = () => (
   <IonApp>
@@ -42,6 +43,7 @@ const App: React.FC = () => (
         <IonRouterOutlet>
           <Route path={APPLINKS.catalog} component={Catalog} exact={true} />
           <Route path="/item/:id" component={Item} exact={true} />
+          <Route path={APPLINKS.addItem} component={AddItem} exact={true} /> 
           <Route path="/tab3" component={Tab3} />
           <Route path="/" render={() => <Redirect to={APPLINKS.catalog} />} exact={true} />
         </IonRouterOutlet>
@@ -50,7 +52,7 @@ const App: React.FC = () => (
             <IonIcon icon={list} />
             <IonLabel>Catalog</IonLabel>
           </IonTabButton>
-          <IonTabButton href="https://wa.me/918989422761" target='_blank'>
+          <IonTabButton href="https://wa.me/918989488761" target='_blank'>
             <IonIcon icon={logoWhatsapp} />
             <IonLabel>Contact</IonLabel>
           </IonTabButton>

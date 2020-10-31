@@ -2,6 +2,7 @@ import app from 'firebase/app'
 import 'firebase/analytics'
 import 'firebase/auth'
 import 'firebase/firestore'
+import 'firebase/storage'
 import { APPSTRING } from './Const';
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -27,10 +28,16 @@ const firebaseConfig = {
           this.app = app;
           this.analytics = app.analytics();
           this.firestore = app.firestore();
+          this.storage = app.storage();
       }
 
       getCatalog = () => this.firestore.collection(APPSTRING.shops).doc(xxx).collection(APPSTRING.catalogItems).get();
       getItem = (id) => this.firestore.collection(APPSTRING.shops).doc(xxx).collection(APPSTRING.catalogItems).doc(id).get();
+      item = (id) => this.firestore.collection(APPSTRING.shops).doc(xxx).collection(APPSTRING.catalogItems).doc(id);
+
+      addItem = (item) => this.firestore.collection(APPSTRING.shops).doc(xxx).collection(APPSTRING.catalogItems).add(item);
+
+      uploadImage = (img, shopLocation) => this.storage.ref(`${APPSTRING.shops}/${xxx}`).child(`img-${Date.now()}`).put(img);
   }
 
 export default Firebase;
