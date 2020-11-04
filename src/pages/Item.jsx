@@ -5,6 +5,7 @@ import './Item.css';
 import APPLINKS from '../helpers/Const';
 import { FirebaseContext } from '../context/FirebaseContext';
 import { Plugins } from '@capacitor/core';
+import { Adsense } from '@ctrl/react-adsense';
 const { Share } = Plugins;
 
 const Item = ({ match }) => {
@@ -72,6 +73,9 @@ const Item = ({ match }) => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding" fullscreen>
+      <Adsense
+            client="ca-pub-2188611974126942"
+          />
         <IonCard className='ion-padding ion-justify-content-center ion-text-center' >
           <img src={photo} alt="" width="360" />
           <IonCardHeader className='ion-padding'>
@@ -82,7 +86,6 @@ const Item = ({ match }) => {
 
             <IonButton fill="outline" onClick={shareLink}>Share</IonButton>
             <IonButton fill="outline" disabled={liked} onClick={likeADD}>Like</IonButton>
-
             <p>
   <IonNote >
     <a href={`${shop}`}>More Items from {shopDtl.shop}</a>
@@ -92,6 +95,13 @@ const Item = ({ match }) => {
             <IonButton fill="outline" expand='block' href={whatsappUrl} target='_blank' >Contact to Buy</IonButton>
           </IonCardHeader>
         </IonCard>
+        <Adsense
+            client="ca-pub-2188611974126942"
+            slot="7259870550"
+            style={{ display: 'block' }}
+            layout="in-article"
+            format="fluid"
+          />
       </IonContent>
     </IonPage>
   );

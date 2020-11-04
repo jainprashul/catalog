@@ -15,6 +15,8 @@ const APPSTRING = {
     APP_NAME : "Alpha Catalogs",
     USERS: 'users',
     ID: 'id',
+
+    icon : require('./storytelling.svg'),
 }
 
 

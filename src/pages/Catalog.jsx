@@ -4,6 +4,7 @@ import './Catalog.css';
 import { FirebaseContext } from '../context/FirebaseContext';
 import CatalogItem from '../components/CatalogItem';
 import { logoWhatsapp } from 'ionicons/icons';
+import { Adsense } from '@ctrl/react-adsense';
 
 const Catalog = ({ match }) => {
 
@@ -14,6 +15,8 @@ const Catalog = ({ match }) => {
 
   const [shopDtl, setShopDtl] = useState({})
   console.log(shopDtl);
+
+  document.title = `${shopDtl.shop} - Catalog Alpha`
 
   useIonViewDidEnter(() => {
     firebase.getUser(shop).then(res => {
@@ -49,6 +52,10 @@ const Catalog = ({ match }) => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding" fullscreen>
+      <Adsense
+            client="ca-pub-2188611974126942"
+            
+          />
         <h3 className="ion-title ion-text-center">Welcome to</h3>
         <h2 className="ion-title ion-text-center">{shopDtl.shop}</h2>
         <IonGrid>
@@ -57,14 +64,20 @@ const Catalog = ({ match }) => {
           </IonRow>
         </IonGrid>
 
+        <Adsense
+            client="ca-pub-2188611974126942"
+            slot="7259870550"
+            style={{ display: 'block' }}
+            layout="in-article"
+            format="fluid"
+          />
+
       </IonContent>
       <IonFooter>
         <IonToolbar>
-          
-            <IonButton fill='outline'  expand='block'>
+            <IonButton fill='outline' href={`https://wa.me/91${shopDtl.phoneNumber}?text=${encodeURI('Hello I have seen your products in Catalog Alpha. I would like to Know More ')}`} target='_blank'   expand='block'>
               <IonIcon color='success' icon={logoWhatsapp} size='large' />
               Contact Us</IonButton>
-          
         </IonToolbar>
       </IonFooter>
     </IonPage>

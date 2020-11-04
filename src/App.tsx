@@ -34,6 +34,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import APPLINKS from './helpers/Const';
+import Welcome from './pages/Welcome';
 
 
 const App: React.FC = () => (
@@ -44,14 +45,14 @@ const App: React.FC = () => (
           <Route path={APPLINKS.catalog} component={Catalog} exact={true} />
           <Route path={APPLINKS.item} component={Item} exact={true} />
           {/* <Route path="/tab3" component={Tab3} /> */}
-          <Route path="/" render={() => <Redirect to={APPLINKS.catalog} />} exact={true} />
+          <Route path="/" render={() => <Welcome/>} exact={true} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom" hidden>
           <IonTabButton tab="catalog" href={APPLINKS.catalog}>
             <IonIcon icon={list} />
             <IonLabel>Catalog</IonLabel>
           </IonTabButton>
-          <IonTabButton href="https://wa.me/918989488761" target='_blank'>
+          <IonTabButton href="#" target='_blank'>
             <IonIcon icon={logoWhatsapp} />
             <IonLabel>Contact</IonLabel>
           </IonTabButton>
