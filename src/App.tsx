@@ -33,8 +33,8 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import APPLINKS from './components/Const';
-import AddItem from './pages/AddItem';
+import APPLINKS from './helpers/Const';
+
 
 const App: React.FC = () => (
   <IonApp>
@@ -42,12 +42,11 @@ const App: React.FC = () => (
       <IonTabs>
         <IonRouterOutlet>
           <Route path={APPLINKS.catalog} component={Catalog} exact={true} />
-          <Route path="/item/:id" component={Item} exact={true} />
-          <Route path={APPLINKS.addItem} component={AddItem} exact={true} /> 
-          <Route path="/tab3" component={Tab3} />
+          <Route path={APPLINKS.item} component={Item} exact={true} />
+          {/* <Route path="/tab3" component={Tab3} /> */}
           <Route path="/" render={() => <Redirect to={APPLINKS.catalog} />} exact={true} />
         </IonRouterOutlet>
-        <IonTabBar slot="bottom">
+        <IonTabBar slot="bottom" hidden>
           <IonTabButton tab="catalog" href={APPLINKS.catalog}>
             <IonIcon icon={list} />
             <IonLabel>Catalog</IonLabel>
@@ -56,10 +55,12 @@ const App: React.FC = () => (
             <IonIcon icon={logoWhatsapp} />
             <IonLabel>Contact</IonLabel>
           </IonTabButton>
+
           {/* <IonTabButton tab="tab3" href="/tab3">
             <IonIcon icon={square} />
             <IonLabel>Tab 3</IonLabel>
           </IonTabButton> */}
+
         </IonTabBar>
       </IonTabs>
     </IonReactRouter>

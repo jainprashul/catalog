@@ -3,7 +3,7 @@ import 'firebase/analytics'
 import 'firebase/auth'
 import 'firebase/firestore'
 import 'firebase/storage'
-import { APPSTRING } from './Const';
+import { APPSTRING } from '../helpers/Const';
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -26,18 +26,26 @@ const firebaseConfig = {
           app.analytics();
 
           this.app = app;
+          this.auth = app.auth();
           this.analytics = app.analytics();
           this.firestore = app.firestore();
           this.storage = app.storage();
       }
 
-      getCatalog = () => this.firestore.collection(APPSTRING.shops).doc(xxx).collection(APPSTRING.catalogItems).get();
-      getItem = (id) => this.firestore.collection(APPSTRING.shops).doc(xxx).collection(APPSTRING.catalogItems).doc(id).get();
-      item = (id) => this.firestore.collection(APPSTRING.shops).doc(xxx).collection(APPSTRING.catalogItems).doc(id);
+  //** Firestore Database access */
 
-      addItem = (item) => this.firestore.collection(APPSTRING.shops).doc(xxx).collection(APPSTRING.catalogItems).add(item);
+  getCatalog = (uid) => this.firestore.collection(APPSTRING.shops).doc(uid).collection(APPSTRING.catalogItems).get();
+  catalog = (uid) => this.firestore.collection(APPSTRING.shops).doc(uid).collection(APPSTRING.catalogItems);
+  
+  getItem = (uid, id) => this.firestore.collection(APPSTRING.shops).doc(uid).collection(APPSTRING.catalogItems).doc(id).get();
+  item = (uid, id) => this.firestore.collection(APPSTRING.shops).doc(uid).collection(APPSTRING.catalogItems).doc(id);
 
-      uploadImage = (img, shopLocation) => this.storage.ref(`${APPSTRING.shops}/${xxx}`).child(`img-${Date.now()}`).put(img);
+     /** get current user profile */
+    getCurrentUser = () => this.auth.currentUser;
+   /**get user by uid */
+    getUser = (uid) => this.firestore.collection(APPSTRING.shops).where(APPSTRING.ID, '==', uid).get();
+   /** get all users */
+    getAllUsers = () => this.firestore.collection(APPSTRING.shops).get();
   }
 
 export default Firebase;

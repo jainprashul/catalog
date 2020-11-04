@@ -1,7 +1,6 @@
 const APPLINKS = {
-    catalog: '/catalog',
-    item: (id) => (`/item/${id}`),
-    addItem: '/shop/addItem',
+    catalog: '/:shop',
+    item: `/:shop/item/:id`, 
 }
 
 const APPSTRING = {
@@ -13,6 +12,9 @@ const APPSTRING = {
     DOC_MODIFIED: 'modified',
     DOC_REMOVED: 'removed',
     PREFIX_IMAGE: 'image/',
+    APP_NAME : "Alpha Catalogs",
+    USERS: 'users',
+    ID: 'id',
 }
 
 
